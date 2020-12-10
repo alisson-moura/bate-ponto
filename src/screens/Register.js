@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Constants from 'expo-constants';
 import Icon from '@expo/vector-icons/MaterialIcons';
-import { View, StyleSheet, Text, TextInput, Keyboard, Dimensions, SafeAreaView, ScrollView, } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Dimensions, SafeAreaView, ScrollView, } from 'react-native';
 import Button from '../components/Button';
 import * as theme from '../theme';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
-import { event } from 'react-native-reanimated';
-
 
 export default function Register() {
     const [sundaySelected, setSundaySelected] = useState(false);
@@ -25,20 +23,55 @@ export default function Register() {
 
     const [hour, setHour] = useState(new Date());
     const [mode, setMode] = useState('time');
-    const [showTimePicker, setShowTimePicker] = useState(false);
+    const [showStartWorking, setShowStartWorking] = useState(false);
+    const [showStopWorking, setShowStopWorking] = useState(false);
+    const [showStartInterval, setShowStartInterval] = useState(false);
+    const [showStopInterval, setShowStopInterval] = useState(false);
 
-
-    function handleEventClock(event, selectedHour) {
+    function handleStartWorking(event, selectedHour) {
         if (event) {
-            setShowTimePicker(false);
+            setShowStartWorking(false);
         }
         const currentHour = selectedHour || hour;
-        setHour(currentHour);
+
+        let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
+        setStartWorking(h)
+        setShowStartWorking(false);
     }
 
-    function showClock() {
-        setShowTimePicker(true);
+    function handleStopWorking(event, selectedHour) {
+        if (event) {
+            setShowStopWorking(false);
+        }
+        const currentHour = selectedHour || hour;
+
+        let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
+        setStopWorking(h)
+        setShowStopWorking(false);
     }
+
+    function handleStartInterval(event, selectedHour) {
+        if (event) {
+            setShowStartInterval(false);
+        }
+        const currentHour = selectedHour || hour;
+
+        let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
+        setStartInterval(h)
+        setShowStartInterval(false);
+    }
+
+    function handleStopInterval(event, selectedHour) {
+        if (event) {
+            setShowStopInterval(false);
+        }
+        const currentHour = selectedHour || hour;
+
+        let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
+        setStopInterval(h)
+        setShowStopInterval(false);
+    }
+
 
     function formatHour(hours, minutes) {
         if (hours < 10) {
@@ -49,16 +82,6 @@ export default function Register() {
         }
         return `${hours}:${minutes}`
     }
-
-    function handleStartWorking() {
-        showClock();
-        
-        let h = formatHour(hour.getUTCHours() - 3, hour.getUTCMinutes());
-        setStartWorking(h);
-    }
-
-    console.log(formatHour(hour.getUTCHours() - 3, hour.getUTCMinutes()))
-
 
 
     return (
@@ -85,19 +108,41 @@ export default function Register() {
                     <Text style={styles.title}>Jornada</Text>
                 </View>
                 <View style={styles.containerHours}>
+
                     <View style={styles.hoursDetail}>
                         <Text style={styles.hoursDetailField}>Inícia às:</Text>
                         <Text style={styles.hoursDetailText}>{startWorking}</Text>
-                        <BorderlessButton onPress={handleStartWorking}>
+                        <BorderlessButton onPress={() => { setShowStartWorking(true) }}>
                             <Icon name="schedule" size={24} color={theme.colors.black} />
                         </BorderlessButton>
+                        {showStartWorking && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={hour}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={handleStartWorking}
+                            />
+                        )}
+
                     </View>
                     <View style={styles.hoursDetail}>
                         <Text style={styles.hoursDetailField}>Termina às:</Text>
                         <Text style={styles.hoursDetailText}>{stopWorking}</Text>
-                        <BorderlessButton>
+                        <BorderlessButton onPress={() => { setShowStopWorking(true) }}>
                             <Icon name="schedule" size={24} color={theme.colors.black} />
                         </BorderlessButton>
+                        {showStopWorking && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={hour}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={handleStopWorking}
+                            />
+                        )}
                     </View>
                 </View>
 
@@ -108,29 +153,38 @@ export default function Register() {
                     <View style={styles.hoursDetail}>
                         <Text style={styles.hoursDetailField}>Inícia às:</Text>
                         <Text style={styles.hoursDetailText}>{startInterval}</Text>
-                        <BorderlessButton>
+                        <BorderlessButton onPress={() => { setShowStartInterval(true) }}>
                             <Icon name="schedule" size={24} color={theme.colors.black} />
                         </BorderlessButton>
+                        {showStartInterval && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={hour}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={handleStartInterval}
+                            />
+                        )}
                     </View>
                     <View style={styles.hoursDetail}>
                         <Text style={styles.hoursDetailField}>Termina às:</Text>
                         <Text style={styles.hoursDetailText}>{stopInterval}</Text>
-                        <BorderlessButton>
+                        <BorderlessButton onPress={() => { setShowStopInterval(true) }}>
                             <Icon name="schedule" size={24} color={theme.colors.black} />
                         </BorderlessButton>
+                        {showStopInterval && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={hour}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={handleStopInterval}
+                            />
+                        )}
                     </View>
                 </View>
-
-                {showTimePicker && (
-                    <DateTimePicker
-                        testID="dateTimePicker"
-                        value={hour}
-                        mode={mode}
-                        is24Hour={true}
-                        display="default"
-                        onChange={handleEventClock}
-                    />
-                )}
 
                 <View style={{ ...styles.containerTitle, marginTop: 16 }}>
                     <Text style={{ ...styles.title, fontSize: 20 }}>Dias da semana</Text>
