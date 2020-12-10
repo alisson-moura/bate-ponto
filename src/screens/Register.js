@@ -29,47 +29,52 @@ export default function Register() {
     const [showStopInterval, setShowStopInterval] = useState(false);
 
     function handleStartWorking(event, selectedHour) {
-        if (event) {
-            setShowStartWorking(false);
-        }
-        const currentHour = selectedHour || hour;
-
-        let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
-        setStartWorking(h)
         setShowStartWorking(false);
+
+        if (event.type === 'dismissed') {
+            setStartWorking(startWorking);
+            return;
+        }
+
+        const currentHour = selectedHour || hour;
+        let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
+        setStartWorking(h);
     }
 
     function handleStopWorking(event, selectedHour) {
-        if (event) {
-            setShowStopWorking(false);
+        setShowStopWorking(false);
+        if (event.type === 'dismissed') {
+            setStopWorking(stopWorking);
+            return;
         }
-        const currentHour = selectedHour || hour;
 
+        const currentHour = selectedHour || hour;
         let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
         setStopWorking(h)
-        setShowStopWorking(false);
     }
 
     function handleStartInterval(event, selectedHour) {
-        if (event) {
-            setShowStartInterval(false);
+        setShowStartInterval(false);
+        if (event.type === 'dismissed') {
+            setStartInterval(startInterval)
+            return;
         }
         const currentHour = selectedHour || hour;
 
         let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
         setStartInterval(h)
-        setShowStartInterval(false);
     }
 
     function handleStopInterval(event, selectedHour) {
+        setShowStopInterval(false);
         if (event) {
-            setShowStopInterval(false);
+            setStopInterval(stopInterval);
+            return;
         }
         const currentHour = selectedHour || hour;
 
         let h = formatHour(currentHour.getUTCHours() - 3, currentHour.getUTCMinutes());
         setStopInterval(h)
-        setShowStopInterval(false);
     }
 
 
