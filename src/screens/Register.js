@@ -6,8 +6,11 @@ import { View, StyleSheet, Text, TextInput, Dimensions, SafeAreaView, ScrollView
 import Button from '../components/Button';
 import * as theme from '../theme';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Register() {
+    const navigation = useNavigation();
+
     const [sundaySelected, setSundaySelected] = useState(false);
     const [mondaySelected, setMondaySelected] = useState(false);
     const [tuesdaySelected, setTuesSelected] = useState(false);
@@ -67,7 +70,7 @@ export default function Register() {
 
     function handleStopInterval(event, selectedHour) {
         setShowStopInterval(false);
-        if (event) {
+        if (event.type === 'dismissed') {
             setStopInterval(stopInterval);
             return;
         }
@@ -238,12 +241,10 @@ export default function Register() {
                     </RectButton>
 
                 </View>
+                <View>
+                    <Button icon="arrow-forward" onPress={() => { navigation.navigate('ConfirmProfile') }}>Próximo</Button>
+                </View>
             </ScrollView>
-
-            <View>
-                <Button icon="arrow-forward">Próximo</Button>
-            </View>
-
         </SafeAreaView>
     );
 }
