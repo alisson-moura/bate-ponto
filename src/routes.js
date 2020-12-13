@@ -8,6 +8,7 @@ import Home from './screens/Home';
 import Register from './screens/Register';
 import ConfirmProfile from './screens/ConfirmProfile';
 import Dashboard from './screens/Dashboard';
+import ListRegisters from './screens/ListRegisters';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function Routes() {
                 <Screen name="Register" component={Register} options={{ headerShown: true, header: () => <Header backButton>Informe seus dados</Header> }} />
                 <Screen name="ConfirmProfile" component={ConfirmProfile} options={{headerShown: true, header: () => <Header backButton closeButton>Adicionar Avatar</Header> }} />
                 <Screen name="Dashboard" component={Dashboard} options={{headerShown: true, header: () => <Header menuButton border={false}>Dashboard</Header> }} />
+                <Screen name="ListRegisters" component={ListRegisters} options={{headerShown: true, header: () => <Header backButton >Registros de Ponto</Header> }} />
             </Navigator>
         </NavigationContainer>
     );

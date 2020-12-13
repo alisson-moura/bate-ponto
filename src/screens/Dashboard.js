@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import Icon from '@expo/vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet, Text, TextInput, Image, Dimensions, SafeAreaView, ScrollView, StatusBar, } from 'react-native';
 import Button from '../components/Button';
 import * as theme from '../theme';
@@ -8,6 +9,7 @@ import { BorderlessButton, RectButton, TouchableOpacity } from 'react-native-ges
 import avatar from '../assets/images.png';
 
 export default function Dashboard() {
+    const navigation = useNavigation();
     return (
         <SafeAreaView style={styles.container}>
 
@@ -24,23 +26,25 @@ export default function Dashboard() {
             <View style={styles.content}>
                 <View style={styles.header}>
                     <Text style={styles.textHeader}>Ultímos registros</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => { navigation.navigate('ListRegisters') }}>
                         <Text style={styles.buttonHeader}>Ver todos</Text>
                     </TouchableOpacity>
                 </View>
-                <ScrollView style={styles.scrollRegister}  showsVerticalScrollIndicator={false}>
+
+
+                <ScrollView style={styles.scrollRegister} showsVerticalScrollIndicator={false}>
 
                     <TouchableOpacity style={styles.registerContainer}>
                         <View style={styles.dateContainer}>
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
                         </View>
-                        <View  style={styles.dataContainer}>
-                            <View style={{flexDirection: 'row', marginBottom: 4}}>
+                        <View style={styles.dataContainer}>
+                            <View style={{ flexDirection: 'row', marginBottom: 4 }}>
                                 <Text style={styles.textField}>Tipo:</Text>
                                 <Text style={styles.valueField}>Início da jornada</Text>
                             </View>
-                            <View style={{flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Text style={styles.textField}>Comprovante:</Text>
                                 <Text style={styles.valueField}>Sim</Text>
                             </View>
@@ -52,12 +56,12 @@ export default function Dashboard() {
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
                         </View>
-                        <View  style={styles.dataContainer}>
-                            <View style={{flexDirection: 'row', marginBottom: 4}}>
+                        <View style={styles.dataContainer}>
+                            <View style={{ flexDirection: 'row', marginBottom: 4 }}>
                                 <Text style={styles.textField}>Tipo:</Text>
                                 <Text style={styles.valueField}>Início da jornada</Text>
                             </View>
-                            <View style={{flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Text style={styles.textField}>Comprovante:</Text>
                                 <Text style={styles.valueField}>Sim</Text>
                             </View>
@@ -68,12 +72,12 @@ export default function Dashboard() {
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
                         </View>
-                        <View  style={styles.dataContainer}>
-                            <View style={{flexDirection: 'row', marginBottom: 4}}>
+                        <View style={styles.dataContainer}>
+                            <View style={{ flexDirection: 'row', marginBottom: 4 }}>
                                 <Text style={styles.textField}>Tipo:</Text>
                                 <Text style={styles.valueField}>Início da jornada</Text>
                             </View>
-                            <View style={{flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Text style={styles.textField}>Comprovante:</Text>
                                 <Text style={styles.valueField}>Sim</Text>
                             </View>
@@ -84,12 +88,12 @@ export default function Dashboard() {
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
                         </View>
-                        <View  style={styles.dataContainer}>
-                            <View style={{flexDirection: 'row', marginBottom: 4}}>
+                        <View style={styles.dataContainer}>
+                            <View style={{ flexDirection: 'row', marginBottom: 4 }}>
                                 <Text style={styles.textField}>Tipo:</Text>
                                 <Text style={styles.valueField}>Início da jornada</Text>
                             </View>
-                            <View style={{flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Text style={styles.textField}>Comprovante:</Text>
                                 <Text style={styles.valueField}>Sim</Text>
                             </View>
@@ -100,12 +104,12 @@ export default function Dashboard() {
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
                         </View>
-                        <View  style={styles.dataContainer}>
-                            <View style={{flexDirection: 'row', marginBottom: 4}}>
+                        <View style={styles.dataContainer}>
+                            <View style={{ flexDirection: 'row', marginBottom: 4 }}>
                                 <Text style={styles.textField}>Tipo:</Text>
                                 <Text style={styles.valueField}>Início da jornada</Text>
                             </View>
-                            <View style={{flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Text style={styles.textField}>Comprovante:</Text>
                                 <Text style={styles.valueField}>Sim</Text>
                             </View>
@@ -116,12 +120,12 @@ export default function Dashboard() {
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
                         </View>
-                        <View  style={styles.dataContainer}>
-                            <View style={{flexDirection: 'row', marginBottom: 4}}>
+                        <View style={styles.dataContainer}>
+                            <View style={{ flexDirection: 'row', marginBottom: 4 }}>
                                 <Text style={styles.textField}>Tipo:</Text>
                                 <Text style={styles.valueField}>Início da jornada</Text>
                             </View>
-                            <View style={{flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Text style={styles.textField}>Comprovante:</Text>
                                 <Text style={styles.valueField}>Sim</Text>
                             </View>
@@ -132,19 +136,25 @@ export default function Dashboard() {
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
                         </View>
-                        <View  style={styles.dataContainer}>
-                            <View style={{flexDirection: 'row', marginBottom: 4}}>
+                        <View style={styles.dataContainer}>
+                            <View style={{ flexDirection: 'row', marginBottom: 4 }}>
                                 <Text style={styles.textField}>Tipo:</Text>
                                 <Text style={styles.valueField}>Início da jornada</Text>
                             </View>
-                            <View style={{flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Text style={styles.textField}>Comprovante:</Text>
                                 <Text style={styles.valueField}>Sim</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
-                
+
                 </ScrollView>
+            </View>
+
+            <View style={styles.floatButton}>
+                <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                    <Icon name="fingerprint" size={40} color="#fff"/>
+                </TouchableOpacity>
             </View>
 
         </SafeAreaView >
@@ -229,7 +239,7 @@ const styles = StyleSheet.create({
         fontSize: theme.sizes.title
     },
     scrollRegister: {
-       marginTop: 24
+        marginTop: 24
     },
 
     registerContainer: {
@@ -252,14 +262,14 @@ const styles = StyleSheet.create({
     },
     dateText: {
         color: '#fff',
-        fontSize:16,
+        fontSize: 16,
         fontFamily: 'Roboto_700Bold'
     },
     dataContainer: {
         marginLeft: 16
     },
     textField: {
-        marginRight:8,
+        marginRight: 8,
         color: theme.colors.secundary,
         fontFamily: 'Roboto_700Bold',
         fontSize: 16
@@ -268,5 +278,17 @@ const styles = StyleSheet.create({
         color: theme.colors.black,
         fontFamily: 'Roboto_500Medium',
         fontSize: 16
+    },
+    floatButton: {
+        position: 'absolute',
+        width: 62,
+        height: 62,
+        bottom: 30 + 80,
+        right: 20,
+        borderRadius: 62/2,
+        backgroundColor: theme.colors.green,
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: 2
     }
 });
