@@ -241,7 +241,7 @@ export default function Register() {
                     </RectButton>
 
                 </View>
-                <View>
+                <View style={{marginBottom: 16}}>
                     <Button icon="arrow-forward" onPress={() => { navigation.navigate('ConfirmProfile') }}>Próximo</Button>
                 </View>
             </ScrollView>
