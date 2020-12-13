@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { View, StyleSheet, Text, TextInput, Image, Dimensions, SafeAreaView, ScrollView, StatusBar, } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Button from '../components/Button';
 import * as theme from '../theme';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import avatar from '../assets/images.png';
 
 export default function ConfirmProfile() {
+    const navigation = useNavigation();
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.content}>
@@ -103,7 +105,7 @@ export default function ConfirmProfile() {
 
                 </View>
                 <View style={{marginBottom: 24}}>
-                    <Button icon="done" onPress={() => { }}>Confirmar</Button>
+                    <Button icon="done" onPress={() => {navigation.navigate('Dashboard') }}>Confirmar</Button>
                 </View>
             </ScrollView>
         </SafeAreaView >

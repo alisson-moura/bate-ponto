@@ -6,15 +6,32 @@ import { Text, StyleSheet, View } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import * as theme from '../theme';
 
-export default function Header({ children, closeButton = false, backButton = false }) {
+export default function Header({ children, menuButton = false, closeButton = false, backButton = false, border = true }) {
     const navigation = useNavigation()
 
     function handleNavigateGoBack() {
         navigation.goBack()
     }
-    
+
+    if (menuButton) {
+        return (
+            <View style={{ ...styles.container, borderBottomWidth: border ? 1 : 0, borderColor: border ? '#dde3f0' : 0 }}>
+                {menuButton ? (
+                    <BorderlessButton onPress={() => { }}><Icon name="menu" size={24} color='#8FA7B2' /></BorderlessButton>
+                )
+                    : <View style={styles.centerTitle} />}
+
+                <Text style={styles.title}>{children}</Text>
+
+                {closeButton ? (
+                    <BorderlessButton><Icon name="close" size={24} color={theme.colors.pinky} /></BorderlessButton>
+                ) : <View style={styles.centerTitle} />}
+
+            </View>
+        );
+    }
     return (
-        <View style={styles.container}>
+        <View style={{ ...styles.container, borderBottomWidth: border ? 1 : 0, borderColor: border ? '#dde3f0' : 0 }}>
             {backButton ? (
                 <BorderlessButton onPress={handleNavigateGoBack}><Icon name="keyboard-backspace" size={24} color={theme.colors.blue} /></BorderlessButton>
             )
