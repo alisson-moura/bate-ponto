@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Constants from 'expo-constants';
 import Icon from '@expo/vector-icons/MaterialIcons';
-import { View, StyleSheet, Text, TextInput, Dimensions, SafeAreaView, ScrollView, } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Dimensions, SafeAreaView, ScrollView, StatusBar, } from 'react-native';
 import Button from '../components/Button';
 import * as theme from '../theme';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
@@ -241,7 +241,7 @@ export default function Register() {
                     </RectButton>
 
                 </View>
-                <View style={{marginBottom: 16}}>
+                <View style={{marginBottom: 24}}>
                     <Button icon="arrow-forward" onPress={() => { navigation.navigate('ConfirmProfile') }}>Próximo</Button>
                 </View>
             </ScrollView>
@@ -251,19 +251,19 @@ export default function Register() {
 
 const styles = StyleSheet.create({
     container: {
-        height: Dimensions.get('window').height - (2 * Constants.statusBarHeight),
-        paddingBottom: Constants.statusBarHeight,
+        height: Dimensions.get('window').height,
         backgroundColor: theme.colors.gray,
+        paddingBottom: 80
     },
     content: {
         flex: 1,
         marginHorizontal: 20,
-        marginVertical: 12,
     },
     containerTitle: {
         borderBottomColor: theme.colors.border,
         borderBottomWidth: 2,
         marginBottom: 18,
+        marginTop: 16,
     },
     title: {
         color: theme.colors.blueFont,
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     },
     daysOfWeek: {
         flexDirection: 'row',
-        marginBottom: 80,
+        marginBottom: 16,
         justifyContent: 'center'
     },
     dayButton: {

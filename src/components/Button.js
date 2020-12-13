@@ -23,8 +23,6 @@ const styles = StyleSheet.create({
         borderRadius: theme.sizes.border,
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'absolute',
-        bottom: 8,
         alignSelf: 'center',
         elevation: 2,
     },
