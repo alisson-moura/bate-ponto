@@ -7,7 +7,7 @@ import * as theme from '../theme';
 import { BorderlessButton, RectButton, TouchableOpacity } from 'react-native-gesture-handler';
 import avatar from '../assets/images.png';
 
-export default function Dashboard() {
+export default function ListRegisters() {
     return (
         <SafeAreaView style={styles.container}>
 

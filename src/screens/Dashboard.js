@@ -34,7 +34,7 @@ export default function Dashboard() {
 
                 <ScrollView style={styles.scrollRegister} showsVerticalScrollIndicator={false}>
 
-                    <TouchableOpacity style={styles.registerContainer}>
+                    <TouchableOpacity style={styles.registerContainer} onPress={() => navigation.navigate('RegisterDetail')}>
                         <View style={styles.dateContainer}>
                             <Text style={styles.dateText}>07:00</Text>
                             <Text style={styles.dateText}>13/12/2020</Text>
@@ -152,7 +152,8 @@ export default function Dashboard() {
             </View>
 
             <View style={styles.floatButton}>
-                <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <TouchableOpacity onPress={() => navigation.navigate('NewRegister')}
+                style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                     <Icon name="fingerprint" size={40} color="#fff"/>
                 </TouchableOpacity>
             </View>
